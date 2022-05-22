@@ -1,3 +1,15 @@
+# Wordle Clone
+In this project I tried to make a wordle clone which functions exactly like the official [Wordle](https://www.nytimes.com/games/wordle/index.html)
+
+# Tech Stack
+- NextJS as framework
+- TailwindCSS for styling
+
+# Latest Fixes
+none
+
+# NextJS auto generated text starts here
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
