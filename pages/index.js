@@ -40,32 +40,29 @@ export default function Home() {
       return;
     }
     if (currentLetter === 4) {
-      // console.log("row max");
       return;
     }
     const tempLetter = currentLetter + 1;
     setCurrentLetter(tempLetter);
     const temp = [...display];
     temp[currentRow][tempLetter] = key;
-    console.log(temp);
     setDisplay(temp);
     document.querySelector(`#tile${currentRow}${tempLetter}`).innerText =
       temp[currentRow][tempLetter];
   }
-  
-  function handleDelete(){
-    if(currentLetter-1< -1) return
-    const temp = [...display]
-    temp[currentRow][currentLetter]=""
-    setCurrentLetter(c=>c-1)
+
+  function handleDelete() {
+    if (currentLetter - 1 < -1) return;
+    const temp = [...display];
+    temp[currentRow][currentLetter] = "";
+    setCurrentLetter((c) => c - 1);
   }
-  
+
   function handleEnter() {
-    console.log(randomWord);
     if (currentLetter !== 4) return;
-    if(!words.wordArr.includes(display[currentRow].join("").toLowerCase())) return
+    if (!words.wordArr.includes(display[currentRow].join("").toLowerCase()))
+      return;
     if (display[currentRow].join("") === randomWord.toUpperCase()) {
-      console.log("same");
       handleSame();
       return;
     }
@@ -75,7 +72,6 @@ export default function Home() {
     }
     setCurrentRow((c) => c + 1);
     setCurrentLetter(-1);
-    console.log(currentRow);
     handleNotSame();
   }
 
@@ -89,21 +85,18 @@ export default function Home() {
     for (let tile = 0; tile < currentWord.length; tile++) {
       const letter = currentWord.charAt(tile);
       if (letter === randomWord.charAt(tile)) {
-        console.log("same");
         document.querySelector(
           `#tile${currentRow}${tile}`
         ).style.backgroundColor = "green";
         continue;
       }
       if (randomWord.includes(letter)) {
-        console.log("not-loc");
 
         document.querySelector(
           `#tile${currentRow}${tile}`
         ).style.backgroundColor = "yellow";
         continue;
       }
-      console.log("not-same");
       document.querySelector(
         `#tile${currentRow}${tile}`
       ).style.backgroundColor = "gray";
@@ -113,10 +106,7 @@ export default function Home() {
   function handleNotSame() {
     setSame(false);
     let currentWord = display[currentRow].join("").toLowerCase();
-    console.log(currentWord);
     handleColor(currentWord);
-
-    // console.log("notsame");
   }
   function handleAgain() {
     const temp = [
@@ -145,10 +135,20 @@ export default function Home() {
     <div>
       <Head>
         <title>Wordle Clone</title>
+        <meta name="title" content="Wordle Clone" />
         <meta
           name="description"
-          content="An endless version of the original Wordle"
+          content="An Endless version of the original wordle!"
         />
+        <meta
+          name="keywords"
+          content="wordle, wordle game, wordle clone, clone, endless, endless game, word game, words"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="English" />
+        <meta name="author" content="Ayush Bohra" />
+
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="gameContainer absolute top-0 right-0 flex flex-col items-center justify-start h-screen w-screen p-4 pt-0">
@@ -190,7 +190,7 @@ export default function Home() {
         >
           <p className={`${same ? "" : "hidden"}`}>You got it ma Boii!</p>
           <p className={`${same ? "hidden" : ""}`}>
-            You did not get it ma Boii :(
+            You did not get it ma Boii :(. The answer was: {randomWord}
           </p>
           <button
             className="bg-indigo-500 px-4 py-2 mt-2 rounded-lg"
